@@ -2,7 +2,8 @@
 # Production-ready container with Java, Python, Node.js, and all common tools
 
 # Amazon Linux 2023 base image (required for public ECR compliance)
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023
+# Multi-arch image: resolves to x86_64 or aarch64 (AWS Graviton) per build platform
+FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2023
 
 ENV TZ=UTC
 
@@ -27,8 +28,8 @@ RUN dnf install -y \
     xz-devel \
     && dnf clean all
 
-# Install AWS CLI v2
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+# Install AWS CLI v2 (architecture-aware: x86_64 or aarch64)
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
     ./aws/install && \
     rm -rf aws awscliv2.zip
@@ -53,7 +54,10 @@ RUN dnf install -y \
     && dnf clean all
 
 # Set default Java version to Corretto 17
-ENV JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto.x86_64
+# Corretto installs to an arch-suffixed path (.x86_64 / .aarch64); create a
+# stable arch-independent symlink so JAVA_HOME works on x86_64 and Graviton.
+RUN ln -s "/usr/lib/jvm/java-17-amazon-corretto.$(uname -m)" /usr/lib/jvm/java-17-amazon-corretto-current
+ENV JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto-current
 ENV MAVEN_HOME=/usr/share/maven
 ENV PATH="$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH"
 

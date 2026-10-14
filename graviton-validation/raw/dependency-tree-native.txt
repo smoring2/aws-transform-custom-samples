@@ -1,0 +1,19 @@
+# Dependency tree generation: NOT APPLICABLE
+#
+# Command attempted: mvn dependency:tree -DoutputType=text
+# Result: no Maven or Gradle project found in this repository.
+#
+# Evidence (file inventory search, repository root, .git excluded):
+#   pom.xml            -> 0 matches
+#   build.gradle(.kts) -> 0 matches
+#   settings.gradle    -> 0 matches
+#   *.java             -> 0 matches
+#   *.jar              -> 0 matches
+#
+# This repository contains transformation definitions (Markdown), deployment
+# automation (Bash), AWS CDK infrastructure (TypeScript) and Lambda handlers
+# (Python). There is no Java build to resolve dependencies for.
+#
+# Filtered native-artifact scan (jna, netty-transport-native, snappy, lz4,
+# zstd, rocksdb, sqlite, conscrypt, protobuf, jnr, leveldbjni): 0 matches,
+# as there is no dependency tree to filter.
