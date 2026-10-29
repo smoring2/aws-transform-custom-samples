@@ -25,7 +25,7 @@ export class NotificationStack extends cdk.Stack {
 
     // Lambda function to format notifications with proper line breaks
     const formatFunction = new lambda.Function(this, 'FormatNotificationFunction', {
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'format-notification.handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../lambda')),
       environment: {
@@ -44,7 +44,7 @@ export class NotificationStack extends cdk.Stack {
         },
         {
           id: 'AwsSolutions-L1',
-          reason: 'Python 3.11 is the latest stable runtime.',
+          reason: 'Python 3.13 is the latest stable runtime.',
         },
       ],
       true

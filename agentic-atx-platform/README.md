@@ -27,7 +27,7 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed diagrams and data flows.
 | Tool | Version | macOS | Windows | Linux |
 |------|---------|-------|---------|-------|
 | AWS CLI | v2.13+ | `brew install awscli` | [MSI Installer](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) | `curl`, `apt`, or `yum` |
-| Python | 3.11+ | `brew install python@3.11` | [python.org](https://www.python.org/downloads/) | `apt install python3.11` |
+| Python | 3.13+ | `brew install python@3.13` | [python.org](https://www.python.org/downloads/) | `apt install python3.13` |
 | Node.js | 18+ | `brew install node` | [nodejs.org](https://nodejs.org/) | `apt install nodejs` |
 | Docker | 20+ | [Docker Desktop](https://docs.docker.com/get-docker/) | [Docker Desktop](https://docs.docker.com/get-docker/) | `apt install docker.io` |
 | SAM CLI | Latest | `brew install aws-sam-cli` | [MSI Installer](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html) | `pip install aws-sam-cli` |
@@ -246,7 +246,7 @@ Then continue with the SAM deployment (Option A Step 3+) or use the CDK AgentCor
 
 ```bash
 # Terminal 1: Orchestrator (port 8080)
-cd orchestrator && source .venv/bin/activate && python3.11 agent.py
+cd orchestrator && source .venv/bin/activate && python3.13 agent.py
 
 # Terminal 2: UI (port 3000, proxies /api to 8080)
 cd ui && npm run dev

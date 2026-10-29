@@ -110,7 +110,7 @@ export class ApiStack extends cdk.Stack {
     // Lambda Functions
     const triggerJobFunction = new lambda.Function(this, 'TriggerJobFunction', {
       functionName: 'atx-trigger-job',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'trigger_job.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       role: lambdaRole,
@@ -120,7 +120,7 @@ export class ApiStack extends cdk.Stack {
 
     const getJobStatusFunction = new lambda.Function(this, 'GetJobStatusFunction', {
       functionName: 'atx-get-job-status',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'get_job_status.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       role: lambdaRole,
@@ -130,7 +130,7 @@ export class ApiStack extends cdk.Stack {
 
     const terminateJobFunction = new lambda.Function(this, 'TerminateJobFunction', {
       functionName: 'atx-terminate-job',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'terminate_job.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       role: lambdaRole,
@@ -140,7 +140,7 @@ export class ApiStack extends cdk.Stack {
 
     const triggerBatchJobsFunction = new lambda.Function(this, 'TriggerBatchJobsFunction', {
       functionName: 'atx-trigger-batch-jobs',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'trigger_batch_jobs.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       role: lambdaRole,
@@ -150,7 +150,7 @@ export class ApiStack extends cdk.Stack {
 
     const getBatchStatusFunction = new lambda.Function(this, 'GetBatchStatusFunction', {
       functionName: 'atx-get-batch-status',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'get_batch_status.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       role: lambdaRole,
@@ -160,7 +160,7 @@ export class ApiStack extends cdk.Stack {
 
     const configureMcpFunction = new lambda.Function(this, 'ConfigureMcpFunction', {
       functionName: 'atx-configure-mcp',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'configure_mcp.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       role: lambdaRole,
@@ -170,7 +170,7 @@ export class ApiStack extends cdk.Stack {
 
     const uploadCodeFunction = new lambda.Function(this, 'UploadCodeFunction', {
       functionName: 'atx-upload-code',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'upload_code.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       role: lambdaRole,
@@ -180,7 +180,7 @@ export class ApiStack extends cdk.Stack {
 
     const getKnowledgeItemsFunction = new lambda.Function(this, 'GetKnowledgeItemsFunction', {
       functionName: 'atx-get-knowledge-items',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'get_knowledge_items.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       role: lambdaRole,
@@ -190,7 +190,7 @@ export class ApiStack extends cdk.Stack {
 
     const getMetricsFunction = new lambda.Function(this, 'GetMetricsFunction', {
       functionName: 'atx-get-metrics',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'get_metrics.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       role: lambdaRole,
@@ -201,7 +201,7 @@ export class ApiStack extends cdk.Stack {
     // Suppress Python runtime warnings for all Lambda functions
     const pythonRuntimeSuppression = {
       id: 'AwsSolutions-L1',
-      reason: 'Python 3.11 is stable and fully supported until October 2027. Python 3.13 is too new (released Oct 2024) for production use. Our Lambda functions use standard boto3 APIs that work reliably on 3.11.',
+      reason: 'Python 3.13 is the latest supported Lambda runtime. Our Lambda functions use standard boto3 APIs that work reliably on 3.13.',
     };
 
     NagSuppressions.addResourceSuppressions(triggerJobFunction, [pythonRuntimeSuppression], true);

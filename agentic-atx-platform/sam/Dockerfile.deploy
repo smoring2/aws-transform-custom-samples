@@ -2,7 +2,7 @@
 # Uses boto3 bedrock-agentcore-control SDK directly — no CLI subprocess calls.
 # Packages orchestrator code into a ZIP, uploads to S3, calls create/update_agent_runtime.
 
-FROM public.ecr.aws/lambda/python:3.11
+FROM public.ecr.aws/lambda/python:3.13
 
 # Install only what's needed — no starter toolkit required
 COPY requirements-deploy.txt ${LAMBDA_TASK_ROOT}/requirements-deploy.txt
