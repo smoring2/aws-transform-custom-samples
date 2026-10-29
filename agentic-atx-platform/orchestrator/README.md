@@ -30,11 +30,11 @@ Each sub-agent is itself a Strands Agent with its own system prompt and tools th
 ## Deploy
 
 ```bash
-python3.11 -m venv .venv && source .venv/bin/activate
+python3.13 -m venv .venv && source .venv/bin/activate
 pip install bedrock-agentcore strands-agents boto3 pyyaml bedrock-agentcore-starter-toolkit
 
 agentcore configure -e agent.py -n atx_transform_orchestrator -r us-east-1 -ni \
-  --deployment-type direct_code_deploy --runtime PYTHON_3_11 -rf requirements.txt
+  --deployment-type direct_code_deploy --runtime PYTHON_3_13 -rf requirements.txt
 agentcore deploy --auto-update-on-conflict
 ```
 
@@ -49,5 +49,5 @@ agentcore invoke '{"prompt": "Execute AWS/python-version-upgrade on https://gith
 
 ```bash
 source .venv/bin/activate
-python3.11 agent.py  # Runs on port 8080
+python3.13 agent.py  # Runs on port 8080
 ```

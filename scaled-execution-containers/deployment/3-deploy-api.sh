@@ -304,7 +304,7 @@ for FILE_NAME in "${LAMBDA_FUNCTIONS[@]}"; do
         # Create new function
         aws lambda create-function \
             --function-name "$LAMBDA_NAME" \
-            --runtime python3.11 \
+            --runtime python3.13 \
             --role "$LAMBDA_ROLE_ARN" \
             --handler "${FILE_NAME}.lambda_handler" \
             --zip-file fileb:///tmp/lambda-deployment.zip \

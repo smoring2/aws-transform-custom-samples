@@ -176,7 +176,7 @@ export class AgentCoreStack extends cdk.Stack {
 
     const asyncLambda = new lambda.Function(this, 'AsyncInvokeAgent', {
       functionName: 'atx-async-invoke-agent',
-      runtime: lambda.Runtime.PYTHON_3_11,
+      runtime: lambda.Runtime.PYTHON_3_13,
       handler: 'async_invoke_agent.lambda_handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../../api/lambda')),
       timeout: cdk.Duration.minutes(15),
@@ -203,7 +203,7 @@ export class AgentCoreStack extends cdk.Stack {
     ], true);
 
     NagSuppressions.addResourceSuppressions(asyncLambda, [
-      { id: 'AwsSolutions-L1', reason: 'Python 3.11 is stable and supported until Oct 2027.' },
+      { id: 'AwsSolutions-L1', reason: 'Python 3.13 is the latest supported Lambda runtime.' },
     ], true);
 
     // ========================================
